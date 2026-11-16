@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | SMP Negeri 2 Ciomas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+  <main class="login-page">
+    <div class="login-decoration decoration-one"></div>
+    <div class="login-decoration decoration-two"></div>
+
+    <div class="login-card reveal show">
+      <a href="index_sekolah.html" class="login-logo">
+        <img src="smpn_2-removebg-preview.png" alt="Logo SMP Negeri 2 Ciomas">
+      </a>
+
+      <div class="title">
+        <h1>Selamat Datang</h1>
+        <p>Silakan masuk ke sistem sekolah</p>
+      </div>
+
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Masukkan username" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required>
+
+        <button type="submit">Masuk</button>
+        <p id="pesan"></p>
+      </form>
+
+      <a class="back" href="index_sekolah.html">← Kembali ke halaman utama</a>
+    </div>
+  </main>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+  const pesan = document.getElementById("pesan");
+
+  if (username === "necidos123@necid.com" && password === "necid12345") {
+    sessionStorage.setItem("login", "true");
+    sessionStorage.setItem("username", username);
+
+    pesan.textContent = "Login berhasil. Mengalihkan...";
+    pesan.className = "success";
+
+    setTimeout(() => {
+      window.location.href = "index_sekolah.html";
+    }, 700);
+  } else {
+    pesan.textContent = "Username atau password salah.";
+    pesan.className = "error";
+  }
+});
+</script>
+</body>
+</html>
